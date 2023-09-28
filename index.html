@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo Stopots</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #b4b9bb;
+        }
+        .login-container {
+            width: 300px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .login-container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .login-container button {
+            padding: 10px 20px;
+            background-color: #b4b9bb;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            width: 100%;
+            box-sizing: border-box;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+        }
+        .login-container button:hover {
+            background-color: #b4b9bb;
+        }
+        .game-container {
+            display: none;
+            text-align: center; /* Centraliza o conteúdo */
+        }
+        .game-container h2 {
+            margin-top: 20px;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .button-container button {
+            background-color: #b4b9bb; /* Laranja */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+        }
+        .button-container button:hover {
+            background-color: #b4b9bb; /* Laranja mais escuro ao passar o mouse */
+        }
+        .columns {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .column {
+            width: 200px;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container" id="login-container">
+        <!-- Conteúdo do login -->
+        <h2>Login</h2>
+        <input type="text" id="username" placeholder="Usuário">
+        <input type="password" id="password" placeholder="Senha">
+        <button onclick="login()">Entrar</button>
+    </div>
+
+    <div class="container" id="game-container">
+        <!-- Conteúdo da tela de jogo -->
+        <h2>Tela de Sorteio da Letra</h2>
+        <div class="button-container">
+            <button onclick="sortearLetra()">Sortear Letra</button>
+        </div>
+        <p id="letraSorteada"></p>
+
+        <h2>Colunas e Regras</h2>
+        <div class="columns">
+            <!-- Conteúdo das colunas -->
+            <div class="column">
+                <h3>Nome</h3>
+                <input type="text" id="nome" placeholder="Digite um nome">
+            </div>
+            <div class="column">
+                <h3>CEP</h3>
+                <input type="text" id="cep" placeholder="Digite um CEP">
+            </div>
+            <div class="column">
+                <h3>Minha Sogra É</h3>
+                <input type="text" id="minhaSogra" placeholder="Digite algo sobre sua sogra">
+            </div>
+            <div class="column">
+                <h3>Fruta</h3>
+                <input type="text" id="fruta" placeholder="Digite uma fruta">
+            </div>
+            <div class="column">
+                <h3>Carro</h3>
+                <input type="text" id="carro" placeholder="Digite um carro">
+            </div>
+            <div class="column">
+                <h3>Cor</h3>
+                <input type="text" id="cor" placeholder="Digite uma cor">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Inicialmente, a tela de jogo está oculta
+        document.getElementById("game-container").style.display = "none";
+
+        function login() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var loginContainer = document.getElementById("login-container");
+            var gameContainer = document.getElementById("game-container");
+
+            if (username === "victor" && password === "12345") {
+                // Login correto, mostrar a tela do jogo e ocultar a tela de login
+                loginContainer.style.display = "none";
+                gameContainer.style.display = "block";
+            } else {
+                alert("Usuário ou senha incorretos. Tente novamente.");
+            }
+        }
+
+        function sortearLetra() {
+            var letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            var letraSorteada = letras.charAt(Math.floor(Math.random() * letras.length));
+            document.getElementById("letraSorteada").innerText = "Letra sorteada: " + letraSorteada;
+        }
+    </script>
+</body>
+</html>
